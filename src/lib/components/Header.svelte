@@ -63,7 +63,7 @@
 	}
 	
 	.hover\:bg-header-hover:hover {
-		background-color: var(--color-header-hover);
+		background-color: rgba(255, 183, 3, 0.5); /* More transparent yellow */
 	}
 	
 	.hover\:text-white:hover {

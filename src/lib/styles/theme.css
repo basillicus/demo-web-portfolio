@@ -7,7 +7,8 @@
   --color-text: #E0E1DD;       /* Light gray text for better readability */
   --color-header-footer: #415A77; /* Medium blue for header/footer */
   --color-header-text: #E0E1DD; /* Light text for header */
-  --color-header-hover: #778DA9; /* Lighter hover background for header */
+  --color-header-hover: #FFB703; /* Vibrant yellow hover background for header */
+  --color-accent-yellow: #FFB703; /* Vibrant yellow for accents */
   
   /* Typography */
   --font-heading: 'Inter', sans-serif;

@@ -49,7 +49,7 @@
 						</div>
 						<p class="text-gray-500 text-sm mb-2">{item.date}</p>
 						<p class="text-gray-600 mb-4">{item.summary}</p>
-						<a href="/{item.type}s/{item.slug}" class="text-primary hover:underline font-medium">
+						<a href="/{item.type}s/{item.slug}" class="text-primary hover:text-accent-yellow font-medium hover:font-bold transition-all">
 							Read {item.type === 'project' ? 'Project' : 'Article'}
 						</a>
 					</div>

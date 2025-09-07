@@ -40,7 +40,7 @@ a {
 }
 
 a:hover {
-  color: var(--color-secondary);
+  color: var(--color-accent-yellow);
 }
 
 /* Custom components */
@@ -60,21 +60,23 @@ a:hover {
 }
 
 .btn:hover {
-  background-color: var(--color-secondary); /* Slight color change on hover */
-  color: var(--color-text);
+  background-color: var(--color-accent-yellow); /* Vibrant yellow on hover */
+  color: #000000; /* Black text for better contrast on yellow */
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);
 }
 
 .btn-secondary {
   background-color: transparent; /* Secondary buttons have transparent background */
-  color: var(--color-primary);
-  border: 1px solid var(--color-primary);
+  color: var(--color-accent-yellow); /* Yellow text */
+  border: 1px solid var(--color-accent-yellow);
+  font-weight: bold; /* Bold text */
 }
 
 .btn-secondary:hover {
-  background-color: var(--color-primary); /* On hover, secondary buttons become solid */
-  color: var(--color-text);
+  background-color: var(--color-accent-yellow); /* Vibrant yellow on hover */
+  color: #000000; /* Black text for better contrast on yellow */
+  border-color: var(--color-accent-yellow);
 }
 
 .card {
@@ -146,7 +148,7 @@ a:hover {
 }
 
 .prose a:hover {
-  color: var(--color-secondary);
+  color: var(--color-accent-yellow);
 }
 
 .prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
@@ -171,11 +173,80 @@ a:hover {
 }
 
 .prose pre {
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: #1B263B; /* Dark blue to match site background */
   color: var(--color-text);
   padding: 1em;
   border-radius: 0.5em;
   overflow-x: auto;
+  border: 1px solid #415A77; /* Subtle border */
+}
+
+.prose code {
+  color: var(--color-text);
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 0.2em 0.4em;
+  border-radius: 0.25em;
+}
+
+/* Custom syntax highlighting colors to match the site */
+pre[class*="language-"] {
+  background-color: #1B263B !important;
+  border: 1px solid #415A77 !important;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: #778DA9 !important; /* Light blue for comments */
+}
+
+.token.punctuation {
+  color: #E0E1DD !important; /* Off-white for punctuation */
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+  color: #FFB703 !important; /* Yellow for numbers and constants */
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+  color: #778DA9 !important; /* Light blue for strings */
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+  color: #E0E1DD !important; /* Off-white for operators */
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+  color: #FFB703 !important; /* Yellow for keywords */
+}
+
+.token.function,
+.token.class-name {
+  color: #E0E1DD !important; /* Off-white for functions */
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+  color: #778DA9 !important; /* Light blue for regex and variables */
 }
 
 /* Responsive adjustments */
@@ -183,4 +254,8 @@ a:hover {
   .section {
     padding: var(--spacing-xl) 0;
   }
+}
+
+.hover\:text-accent-yellow:hover {
+  color: var(--color-accent-yellow);
 }

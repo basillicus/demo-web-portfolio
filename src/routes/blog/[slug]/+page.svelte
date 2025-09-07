@@ -1,4 +1,7 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
+	import { highlightAll } from '$lib/utils/syntaxHighlighting';
+	
 	// Sample data - in a real app, this would come from our content files
 	export let data;
 	
@@ -35,7 +38,7 @@
 			<h2>Your First Machine Learning Project</h2>
 			<p>Let's build a simple classifier to predict whether an email is spam or not:</p>
 			
-			<pre><code class="language-python">from sklearn.model_selection import train_test_split
+			<pre class="language-python"><code>from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.metrics import accuracy_score
@@ -81,6 +84,10 @@ print(f"Accuracy: {accuracy}")</code></pre>
 			<p>The key to mastering machine learning is consistent practice and gradually increasing the complexity of your projects.</p>
 		`
 	};
+	
+	onMount(() => {
+		highlightAll();
+	});
 </script>
 
 <svelte:head>
