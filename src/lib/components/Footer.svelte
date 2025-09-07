@@ -1,7 +1,7 @@
 <footer class="bg-header-footer text-white py-8 mt-12 shadow-md">
 	<div class="container">
 		<div class="flex flex-col md:flex-row justify-between items-center">
-			<div class="mb-4 md:mb-0">
+			<div class="mb-4 md:mb-0 animated-gradient-text">
 				<p>&copy; {new Date().getFullYear()} David Smith. All rights reserved.</p>
 			</div>
 			<div class="flex space-x-6">
@@ -38,5 +38,27 @@
 	
 	.text-secondary {
 		color: var(--color-secondary);
+	}
+	
+	.animated-gradient-text {
+		background: linear-gradient(-45deg, var(--color-text), var(--color-accent-yellow), var(--color-text));
+		background-size: 200% 200%;
+		-webkit-background-clip: text;
+		background-clip: text;
+		color: transparent;
+		animation: gradientShift 3s ease infinite;
+		display: inline-block;
+	}
+	
+	@keyframes gradientShift {
+		0% {
+			background-position: 0% 50%;
+		}
+		50% {
+			background-position: 100% 50%;
+		}
+		100% {
+			background-position: 0% 50%;
+		}
 	}
 </style>

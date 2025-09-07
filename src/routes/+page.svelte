@@ -5,6 +5,9 @@
 	const name = "David Smith";
 	const tagline = "Machine Learning Engineer & AI Researcher";
 	
+	let displayedTagline = '';
+	let taglineIndex = 0;
+	
 	// Featured project
 	const featuredProject = {
 		title: "AI-Powered Customer Analytics Platform",
@@ -45,6 +48,19 @@
 			slug: "neural-networks"
 		}
 	];
+	
+	onMount(() => {
+		// Typewriter effect for tagline
+		const typeTagline = () => {
+			if (taglineIndex < tagline.length) {
+				displayedTagline += tagline.charAt(taglineIndex);
+				taglineIndex++;
+				setTimeout(typeTagline, 50);
+			}
+		};
+		
+		typeTagline();
+	});
 </script>
 
 <svelte:head>
@@ -69,9 +85,9 @@
 
 <div class="container">
 	<!-- Hero Section -->
-	<section class="section text-center">
+	<section class="section text-center fade-in">
 		<h1 class="text-4xl md:text-5xl font-bold mb-4">{name}</h1>
-		<p class="text-xl text-gray-600 mb-8">{tagline}</p>
+		<p class="text-xl text-gray-600 mb-8 min-h-[2rem]">{displayedTagline}<span class="animate-pulse">|</span></p>
 		<div class="flex justify-center gap-4">
 			<a href="/projects" class="btn">View Projects</a>
 			<a href="/blog" class="btn btn-secondary">Read Blog</a>
@@ -79,7 +95,7 @@
 	</section>
 
 	<!-- Featured Project -->
-	<section class="section">
+	<section class="section fade-in">
 		<h2 class="text-3xl font-bold mb-8 text-center">Featured Project</h2>
 		<div class="card max-w-4xl mx-auto">
 			<div class="p-8">
@@ -91,11 +107,11 @@
 	</section>
 
 	<!-- Projects Grid -->
-	<section class="section">
+	<section class="section fade-in-staggered">
 		<h2 class="text-3xl font-bold mb-8 text-center">Recent Projects</h2>
 		<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
 			{#each projects as project}
-				<div class="card">
+				<div class="card fade-in-staggered">
 					<div class="p-6">
 						<h3 class="text-xl font-bold mb-2">{project.title}</h3>
 						<p class="text-gray-600 mb-4">{project.summary}</p>
@@ -115,11 +131,11 @@
 	</section>
 
 	<!-- Blog Preview -->
-	<section class="section">
+	<section class="section fade-in-staggered">
 		<h2 class="text-3xl font-bold mb-8 text-center">Latest from the Blog</h2>
 		<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
 			{#each blogPosts as post}
-				<div class="card">
+				<div class="card fade-in-staggered">
 					<div class="p-6">
 						<h3 class="text-xl font-bold mb-2">{post.title}</h3>
 						<p class="text-gray-500 text-sm mb-2">{post.date}</p>
@@ -140,7 +156,7 @@
 	</section>
 
 	<!-- Contact CTA -->
-	<section class="section text-center">
+	<section class="section text-center fade-in-staggered">
 		<h2 class="text-3xl font-bold mb-4">Let's Connect</h2>
 		<p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
 			Interested in working together or have questions about my work? I'd love to hear from you.

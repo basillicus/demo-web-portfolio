@@ -7,10 +7,11 @@
 body {
   font-family: var(--font-body);
   background: radial-gradient(circle at center, #415A77, #1B263B);
-  background-size: 200% 200%;
-  animation: gradient 15s ease infinite;
+  background-size: 300% 300%;
+  animation: gradient 20s ease infinite;
   color: var(--color-text);
   line-height: 1.6;
+  background-attachment: fixed;
 }
 
 @keyframes gradient {
@@ -63,7 +64,7 @@ a:hover {
   background-color: var(--color-accent-yellow); /* Vibrant yellow on hover */
   color: #000000; /* Black text for better contrast on yellow */
   transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-md), 0 0 15px rgba(255, 183, 3, 0.4);
 }
 
 .btn-secondary {
@@ -249,13 +250,95 @@ pre[class*="language-"] {
   color: #778DA9 !important; /* Light blue for regex and variables */
 }
 
+/* Fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+/* Staggered animation for lists */
+.fade-in-staggered {
+  opacity: 0;
+  animation: fadeIn 0.6s ease-out 0.1s forwards;
+}
+
+.fade-in-staggered:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.fade-in-staggered:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.fade-in-staggered:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.animate-pulse {
+  animation: pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.bg-accent-yellow {
+  background-color: var(--color-accent-yellow);
+}
+
+.group:hover .group-hover\:w-full {
+  width: 100%;
+}
+
+/* Add transition for group hover effects */
+.transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
+
+.duration-300 {
+  transition-duration: 300ms;
+}
+
+.w-0 {
+  width: 0;
+}
+
+.h-0\.5 {
+  height: 0.125rem;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.bottom-0 {
+  bottom: 0;
+}
+
+.left-0 {
+  left: 0;
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .section {
     padding: var(--spacing-xl) 0;
   }
-}
-
-.hover\:text-accent-yellow:hover {
-  color: var(--color-accent-yellow);
 }
