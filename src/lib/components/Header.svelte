@@ -10,12 +10,12 @@
 	};
 </script>
 
-<header class="bg-header-footer text-white py-4 sticky top-0 z-50 shadow-md">
+<header class="bg-header-footer text-white py-3 sticky top-0 z-50 shadow-md">
 	<div class="container flex justify-between items-center">
-		<a href="/" class="text-2xl font-bold" on:click={closeMenu}>DS</a>
+		<a href="/" class="text-2xl font-bold hover:bg-header-hover px-3 py-2 rounded-md transition-colors" on:click={closeMenu}>DS</a>
 		
 		<!-- Desktop Navigation -->
-		<nav class="hidden md:flex space-x-8">
+		<nav class="hidden md:flex space-x-4">
 			<a href="/projects" class="font-bold hover:bg-header-hover hover:text-white px-3 py-2 rounded-md transition-colors" on:click={closeMenu}>Projects</a>
 			<a href="/blog" class="font-bold hover:bg-header-hover hover:text-white px-3 py-2 rounded-md transition-colors" on:click={closeMenu}>Blog</a>
 			<a href="/about" class="font-bold hover:bg-header-hover hover:text-white px-3 py-2 rounded-md transition-colors" on:click={closeMenu}>About</a>
@@ -42,8 +42,8 @@
 	
 	<!-- Mobile Navigation -->
 	{#if isMenuOpen}
-		<div class="md:hidden bg-header-footer pb-4">
-			<div class="container flex flex-col space-y-4">
+		<div class="md:hidden bg-header-footer pb-3">
+			<div class="container flex flex-col space-y-3">
 				<a href="/projects" class="py-2 font-bold hover:bg-header-hover hover:text-white px-3 py-2 rounded-md transition-colors" on:click={closeMenu}>Projects</a>
 				<a href="/blog" class="py-2 font-bold hover:bg-header-hover hover:text-white px-3 py-2 rounded-md transition-colors" on:click={closeMenu}>Blog</a>
 				<a href="/about" class="py-2 font-bold hover:bg-header-hover hover:text-white px-3 py-2 rounded-md transition-colors" on:click={closeMenu}>About</a>
@@ -60,5 +60,13 @@
 	
 	.text-secondary {
 		color: var(--color-secondary);
+	}
+	
+	.hover\:bg-header-hover:hover {
+		background-color: var(--color-header-hover);
+	}
+	
+	.hover\:text-white:hover {
+		color: var(--color-text);
 	}
 </style>

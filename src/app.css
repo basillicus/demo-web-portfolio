@@ -137,6 +137,7 @@ a:hover {
 /* Typography adjustments */
 .prose {
   max-width: none;
+  color: var(--color-text);
 }
 
 .prose a {
@@ -150,6 +151,31 @@ a:hover {
 
 .prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
   color: var(--color-text);
+}
+
+.prose p {
+  color: var(--color-text);
+  opacity: 0.95;
+}
+
+.prose li {
+  color: var(--color-text);
+  opacity: 0.95;
+}
+
+.prose code {
+  color: var(--color-text);
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 0.2em 0.4em;
+  border-radius: 0.25em;
+}
+
+.prose pre {
+  background-color: rgba(0, 0, 0, 0.2);
+  color: var(--color-text);
+  padding: 1em;
+  border-radius: 0.5em;
+  overflow-x: auto;
 }
 
 /* Responsive adjustments */
