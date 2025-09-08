@@ -6,10 +6,10 @@
 /* Base styles */
 body {
   font-family: var(--font-body);
-  background: radial-gradient(circle at center, #415A77, #1B263B);
+  background: radial-gradient(circle at center, var(--color-bg-card), var(--color-bg-secondary));
   background-size: 300% 300%;
   animation: gradient 20s ease infinite;
-  color: var(--color-text);
+  color: var(--color-text-primary);
   line-height: 1.6;
   background-attachment: fixed;
 }
@@ -31,11 +31,11 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 600;
   line-height: 1.2;
   margin-bottom: var(--spacing-md);
-  color: var(--color-text);
+  color: var(--color-text-primary);
 }
 
 a {
-  color: var(--color-primary);
+  color: var(--color-accent-yellow);
   text-decoration: none;
   transition: color var(--transition-fast);
 }
@@ -48,8 +48,8 @@ a:hover {
 .btn {
   display: inline-block;
   padding: var(--spacing-sm) var(--spacing-md);
-  background-color: var(--color-primary);
-  color: var(--color-text); /* Use theme text color for better contrast */
+  background-color: var(--color-accent-yellow);
+  color: #000000; /* Default to black text */
   border-radius: var(--radius-sm); /* Less rounded */
   font-family: var(--font-heading);
   font-weight: 500;
@@ -61,27 +61,41 @@ a:hover {
 }
 
 .btn:hover {
-  background-color: var(--color-accent-yellow); /* Vibrant yellow on hover */
-  color: #000000; /* Black text for better contrast on yellow */
+  background-color: var(--color-accent-yellow);
+  color: #000000;
   transform: translateY(-2px);
-  box-shadow: var(--shadow-md), 0 0 15px rgba(255, 183, 3, 0.4);
+  box-shadow: var(--shadow-md), 0 0 15px rgba(from var(--color-accent-yellow) r g b / 0.4);
+}
+
+/* Specific styling for light theme buttons */
+[data-theme="light"] .btn {
+  color: #003300; /* Dark green text for better contrast on light green */
+}
+
+[data-theme="light"] .btn:hover {
+  color: #003300;
 }
 
 .btn-secondary {
-  background-color: transparent; /* Secondary buttons have transparent background */
-  color: var(--color-accent-yellow); /* Yellow text */
+  background-color: transparent;
+  color: var(--color-accent-yellow);
   border: 1px solid var(--color-accent-yellow);
-  font-weight: bold; /* Bold text */
+  font-weight: bold;
 }
 
 .btn-secondary:hover {
-  background-color: var(--color-accent-yellow); /* Vibrant yellow on hover */
-  color: #000000; /* Black text for better contrast on yellow */
+  background-color: var(--color-accent-yellow);
+  color: #000000;
   border-color: var(--color-accent-yellow);
 }
 
+/* Specific styling for light theme secondary buttons */
+[data-theme="light"] .btn-secondary:hover {
+  color: #003300; /* Dark green text for better contrast on light green */
+}
+
 .card {
-  background-color: #415A77; /* Lighter card background */
+  background-color: var(--color-bg-card);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-sm);
   overflow: hidden;
@@ -108,43 +122,43 @@ a:hover {
 }
 
 .bg-gray-100 {
-  background-color: var(--color-secondary);
+  background-color: var(--color-text-secondary);
 }
 
 .text-gray-700 {
-  color: var(--color-text-light);
+  color: var(--color-bg-primary);
 }
 
 .border-secondary {
-  border-color: var(--color-secondary);
+  border-color: var(--color-text-secondary);
 }
 
 .bg-accent {
-  background-color: var(--color-accent);
+  background-color: var(--color-bg-secondary);
 }
 
 .text-light {
-  color: var(--color-text-light);
+  color: var(--color-bg-primary);
 }
 
 .text-gray-500 {
-  color: var(--color-text);
+  color: var(--color-text-primary);
   opacity: 0.8;
 }
 
 .text-gray-600 {
-  color: var(--color-text);
+  color: var(--color-text-primary);
   opacity: 0.9;
 }
 
 /* Typography adjustments */
 .prose {
   max-width: none;
-  color: var(--color-text);
+  color: var(--color-text-primary);
 }
 
 .prose a {
-  color: var(--color-primary);
+  color: var(--color-accent-yellow);
   text-decoration: underline;
 }
 
@@ -153,33 +167,33 @@ a:hover {
 }
 
 .prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
-  color: var(--color-text);
+  color: var(--color-text-primary);
 }
 
 .prose p {
-  color: var(--color-text);
+  color: var(--color-text-primary);
   opacity: 0.95;
 }
 
 .prose li {
-  color: var(--color-text);
+  color: var(--color-text-primary);
   opacity: 0.95;
 }
 
 .prose code {
-  color: var(--color-text);
+  color: var(--color-text-primary);
   background-color: rgba(255, 255, 255, 0.1);
   padding: 0.2em 0.4em;
   border-radius: 0.25em;
 }
 
 .prose pre {
-  background-color: #1B263B; /* Dark blue to match site background */
-  color: var(--color-text);
+  background-color: var(--color-bg-secondary);
+  color: var(--color-text-primary);
   padding: 1em;
   border-radius: 0.5em;
   overflow-x: auto;
-  border: 1px solid #415A77; /* Subtle border */
+  border: 1px solid var(--color-text-secondary);
 }
 
 .prose code {
@@ -332,8 +346,38 @@ pre[class*="language-"] {
   bottom: 0;
 }
 
-.left-0 {
-  left: 0;
+.transition-colors {
+  transition-property: color;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+}
+
+.theme-link {
+  color: var(--color-accent-yellow); /* Default to accent color (yellow in dark theme) */
+}
+
+[data-theme="light"] .theme-link {
+  color: #003300; /* Dark green in light theme */
+}
+
+.theme-link:hover {
+  color: var(--color-accent-yellow); /* Hover to accent color in both themes */
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+.duration-200 {
+  transition-duration: 200ms;
 }
 
 /* Responsive adjustments */

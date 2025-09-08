@@ -120,7 +120,7 @@
 								<span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-sm">{tag}</span>
 							{/each}
 						</div>
-						<a href="/projects/{project.slug}" class="text-primary hover:text-accent-yellow font-medium hover:font-bold transition-all">View Project</a>
+						<a href="/projects/{project.slug}" class="theme-link font-medium hover:font-bold transition-colors duration-200">View Project</a>
 					</div>
 				</div>
 			{/each}
@@ -145,7 +145,7 @@
 								<span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-sm">{tag}</span>
 							{/each}
 						</div>
-						<a href="/blog/{post.slug}" class="text-primary hover:text-accent-yellow font-medium hover:font-bold transition-all">Read Article</a>
+						<a href="/blog/{post.slug}" class="theme-link font-medium hover:font-bold transition-colors duration-200">Read Article</a>
 					</div>
 				</div>
 			{/each}

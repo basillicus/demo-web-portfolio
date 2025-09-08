@@ -1,14 +1,13 @@
 :root {
-  /* New Color Palette - Lightened */
-  --color-primary: #778DA9;    /* Light blue for accents */
-  --color-secondary: #415A77;  /* Medium blue for hover states */
-  --color-accent: #1B263B;     /* Dark blue for contrast */
-  --color-background: #1B263B; /* Lightened dark blue background */
-  --color-text: #E0E1DD;       /* Light gray text for better readability */
-  --color-header-footer: #415A77; /* Medium blue for header/footer */
-  --color-header-text: #E0E1DD; /* Light text for header */
-  --color-header-hover: #FFB703; /* Vibrant yellow hover background for header */
-  --color-accent-yellow: #FFB703; /* Vibrant yellow for accents */
+  /* Dark Theme (default) */
+  --color-bg-primary: #0D1B2A;
+  --color-bg-secondary: #1B263B;
+  --color-bg-card: #415A77;
+  --color-text-primary: #E0E1DD;
+  --color-text-secondary: #778DA9;
+  --color-header-footer: #1B263B;
+  --color-accent-yellow: #FFB703;
+  --color-accent-green: #6b9080;
   
   /* Typography */
   --font-heading: 'Inter', sans-serif;
@@ -38,4 +37,16 @@
   --transition-fast: 150ms ease;
   --transition-medium: 300ms ease;
   --transition-slow: 500ms ease;
+}
+
+[data-theme="light"] {
+  /* Light Theme */
+  --color-bg-primary: #f6fff8;
+  --color-bg-secondary: #eaf4f4;
+  --color-bg-card: #cce3de;
+  --color-text-primary: #333333;
+  --color-text-secondary: #6b9080;
+  --color-header-footer: #a4c3b2;
+  --color-accent-yellow: #c8ffce;
+  --color-accent-green: #6b9080;
 }
