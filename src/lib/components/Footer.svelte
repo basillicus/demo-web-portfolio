@@ -1,8 +1,8 @@
 <footer class="bg-header-footer/80 text-text-primary py-8 mt-12 shadow-md">
 	<div class="container">
-		<div class="flex flex-col md:flex-row justify-between items-center">
-			<div class="mb-4 md:mb-0 animated-gradient-text">
-				<p>&copy; {new Date().getFullYear()} David Smith. All rights reserved.</p>
+		<div class="flex flex-col items-center">
+			<div class="mb-6 animated-gradient-text">
+				<p class="text-center">&copy; {new Date().getFullYear()} David Smith. All rights reserved.</p>
 			</div>
 			<div class="flex space-x-6">
 				<a href="https://github.com/yourusername" class="social-icon transition-colors duration-200" aria-label="GitHub">
@@ -81,12 +81,12 @@
 	}
 	
 	.animated-gradient-text {
-		background: linear-gradient(-45deg, var(--color-text-primary), var(--color-accent-yellow), var(--color-text-primary));
-		background-size: 200% 200%;
+		background: linear-gradient(90deg, var(--color-text-primary), var(--color-accent-yellow), var(--color-text-primary));
+		background-size: 300% 300%;
 		-webkit-background-clip: text;
 		background-clip: text;
 		color: transparent;
-		animation: gradientShift 3s ease infinite;
+		animation: gradientShift 4s linear infinite;
 		display: inline-block;
 	}
 	
@@ -94,11 +94,8 @@
 		0% {
 			background-position: 0% 50%;
 		}
-		50% {
-			background-position: 100% 50%;
-		}
 		100% {
-			background-position: 0% 50%;
+			background-position: 300% 50%;
 		}
 	}
 </style>

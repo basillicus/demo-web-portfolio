@@ -2,6 +2,7 @@
 @plugin '@tailwindcss/typography';
 
 @import './lib/styles/theme.css';
+@import './lib/styles/font-themes.css';
 
 /* Base styles */
 body {

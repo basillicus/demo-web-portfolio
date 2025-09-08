@@ -64,10 +64,10 @@
 		</nav>
 		
 		<!-- Mobile Menu Button -->
-		<div class="flex items-center">
+		<div class="flex items-center md:hidden">
 			<!-- Theme Toggle Button for Mobile -->
 			<button 
-				class="md:hidden mr-4 p-2 rounded-full hover:bg-header-hover/20 transition-colors focus:outline-none focus:ring-2 focus:ring-accent-yellow"
+				class="mr-4 p-2 rounded-full hover:bg-header-hover/20 transition-colors focus:outline-none focus:ring-2 focus:ring-accent-yellow"
 				on:click={toggleTheme}
 				aria-label="Toggle theme"
 			>
@@ -157,23 +157,20 @@
 	}
 	
 	.animated-gradient-text {
-		background: linear-gradient(-45deg, var(--color-text-primary), var(--color-accent-yellow), var(--color-text-primary));
-		background-size: 200% 200%;
+		background: linear-gradient(90deg, var(--color-text-primary), var(--color-accent-yellow), var(--color-text-primary));
+		background-size: 300% 300%;
 		-webkit-background-clip: text;
 		background-clip: text;
 		color: transparent;
-		animation: gradientShift 3s ease infinite;
+		animation: gradientShift 4s linear infinite;
 	}
 	
 	@keyframes gradientShift {
 		0% {
 			background-position: 0% 50%;
 		}
-		50% {
-			background-position: 100% 50%;
-		}
 		100% {
-			background-position: 0% 50%;
+			background-position: 300% 50%;
 		}
 	}
 	
