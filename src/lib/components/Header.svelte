@@ -30,6 +30,9 @@
 		
 		<!-- Desktop Navigation -->
 		<nav class="hidden md:flex space-x-4 items-center">
+			<a href="/" class="font-bold px-3 py-2 rounded-md transition-all duration-300 relative overflow-hidden group" on:click={closeMenu}>Home
+				<span class="absolute bottom-0 left-0 w-0 h-0.5 bg-accent-yellow transition-all duration-300 group-hover:w-full"></span>
+			</a>
 			<a href="/projects" class="font-bold px-3 py-2 rounded-md transition-all duration-300 relative overflow-hidden group" on:click={closeMenu}>Projects
 				<span class="absolute bottom-0 left-0 w-0 h-0.5 bg-accent-yellow transition-all duration-300 group-hover:w-full"></span>
 			</a>
@@ -106,6 +109,9 @@
 	{#if isMenuOpen}
 		<div class="md:hidden bg-header-footer/90 pb-3 backdrop-blur-sm">
 			<div class="container flex flex-col space-y-3">
+				<a href="/" class="py-2 font-bold px-3 py-2 rounded-md transition-all duration-300 relative overflow-hidden group" on:click={closeMenu}>Home
+					<span class="absolute bottom-0 left-0 w-0 h-0.5 bg-accent-yellow transition-all duration-300 group-hover:w-full"></span>
+				</a>
 				<a href="/projects" class="py-2 font-bold px-3 py-2 rounded-md transition-all duration-300 relative overflow-hidden group" on:click={closeMenu}>Projects
 					<span class="absolute bottom-0 left-0 w-0 h-0.5 bg-accent-yellow transition-all duration-300 group-hover:w-full"></span>
 				</a>

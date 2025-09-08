@@ -4,21 +4,28 @@ A modern, responsive portfolio website for Machine Learning and AI professionals
 
 ## Features
 
-- **Modern Design**: Dark theme with vibrant yellow accents
-- **Responsive Layout**: Works on all device sizes
+- **Modern Design**: Elegant dark/light theme with professional color scheme
+- **Responsive Layout**: Works on all device sizes with mobile-first approach
 - **Syntax Highlighting**: Beautiful code blocks with custom styling
 - **SEO Optimized**: Proper metadata and structured data
 - **Fast & Lightweight**: Static site generation for optimal performance
+- **Accessible**: WCAG compliant design with proper contrast ratios
 - **Easy Content Management**: Add projects and blog posts with Markdown
+- **Multiple Font Themes**: Standard and accessibility-optimized font options
+- **Tag System**: Content organized by tags for easy navigation
+- **Animated Elements**: Subtle animations for enhanced user experience
 
 ## Tech Stack
 
 - **Framework**: SvelteKit
 - **Language**: TypeScript
-- **Styling**: Tailwind CSS
+- **Styling**: Tailwind CSS with custom themes
 - **Markdown Processing**: mdsvex
 - **Syntax Highlighting**: Prism.js
 - **Deployment**: Static site (adapter-static)
+- **Form Handling**: Formspree
+- **Comments**: Giscus
+- **Analytics**: Umami
 
 ## Getting Started
 
@@ -60,7 +67,7 @@ npm run preview
 portfolio/
 ├── content/
 │   ├── blog/          # Blog posts (Markdown files)
-│   └── projects/      # Project showcases (Markdown files)
+│   └── projects/       # Project showcases (Markdown files)
 ├── src/
 │   ├── lib/
 │   │   ├── components/ # Reusable UI components
@@ -83,7 +90,7 @@ portfolio/
 ```markdown
 ---
 title: "Your Blog Post Title"
-date: "2023-12-01"
+date: "2025-12-01"
 summary: "Brief summary of your post"
 tags: ["tag1", "tag2", "tag3"]
 published: true
@@ -102,7 +109,7 @@ Your blog post content here...
 ```markdown
 ---
 title: "Your Project Title"
-date: "2023-12-01"
+date: "2025-12-01"
 summary: "Brief summary of your project"
 tags: ["machine learning", "python", "nlp"]
 published: true
@@ -121,11 +128,29 @@ Colors are defined in `src/lib/styles/theme.css`:
 
 ```css
 :root {
-  --color-primary: #778DA9;     /* Light blue for accents */
-  --color-secondary: #415A77;   /* Medium blue for hover states */
-  --color-accent-yellow: #FFB703; /* Vibrant yellow for highlights */
-  --color-background: #1B263B;  /* Dark blue background */
-  --color-text: #E0E1DD;        /* Off-white text */
+  /* Dark Theme (default) */
+  --color-bg-primary: #0D1B2A;
+  --color-bg-secondary: #152232;
+  --color-bg-card: #415A77;
+  --color-text-primary: #E0E1DD;
+  --color-text-secondary: #778DA9;
+  --color-header-footer: #1B263B;
+  --color-accent-yellow: #FFB703;
+  --color-accent-green: #6b9080;
+}
+```
+
+```css
+[data-theme="light"] {
+  /* Light Theme */
+  --color-bg-primary: #f0f8f0;
+  --color-bg-secondary: #e0f0ed;
+  --color-bg-card: #d8e8e4;
+  --color-text-primary: #222222;
+  --color-text-secondary: #5a7a6f;
+  --color-header-footer: #c0d8d0;
+  --color-accent-yellow: #4a9b5d;
+  --color-accent-green: #3a7a5f;
 }
 ```
 
@@ -139,14 +164,14 @@ Fonts are defined in:
 
 ```css
 :root {
-  --font-heading: 'Inter', sans-serif;
-  --font-body: 'Source Serif Pro', serif;
+  --font-heading: 'Instrument Sans', sans-serif;
+  --font-body: 'Literata', serif;
 }
 ```
 
-To change fonts:
-1. Add new Google Fonts import in `src/app.html`
-2. Update the CSS variables in `theme.css`
+Font themes can be switched between:
+- **Standard**: Instrument Sans + Literata
+- **Accessibility Optimized**: Lexend (for both headings and body)
 
 ### Spacing & Sizes
 
@@ -161,20 +186,27 @@ Consistent spacing is maintained through CSS variables:
   --spacing-xl: 2rem;
   --spacing-2xl: 3rem;
   --spacing-3xl: 4rem;
+  
+  /* Border Radius */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-medium: 300ms ease;
+  --transition-slow: 500ms ease;
 }
 ```
 
-### Shadows & Transitions
+### Shadows
 
 ```css
 :root {
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4);
-  
-  --transition-fast: 150ms ease;
-  --transition-medium: 300ms ease;
-  --transition-slow: 500ms ease;
 }
 ```
 
@@ -227,6 +259,10 @@ Site includes Umami analytics. To configure:
 ### Mobile Menu Issues
 1. Check `src/lib/components/Header.svelte` for responsive classes
 2. Verify Tailwind CSS breakpoints
+
+### Form Readability Issues
+1. Check that form inputs use proper theme variables
+2. Ensure autocomplete styling is overridden with custom CSS
 
 ## Contributing
 

@@ -23,7 +23,7 @@
 					id="name" 
 					name="name" 
 					required
-					class="w-full px-4 py-2 border border-secondary rounded-md focus:outline-none focus:ring-2 focus:ring-primary bg-accent text-light"
+					class="w-full px-4 py-2 border border-[var(--color-text-secondary)] rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--color-accent-yellow)] bg-[var(--color-bg-card)] text-[var(--color-text-primary)] autocomplete-bg-fix"
 				>
 			</div>
 			
@@ -34,7 +34,7 @@
 					id="email" 
 					name="email" 
 					required
-					class="w-full px-4 py-2 border border-secondary rounded-md focus:outline-none focus:ring-2 focus:ring-primary bg-accent text-light"
+					class="w-full px-4 py-2 border border-[var(--color-text-secondary)] rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--color-accent-yellow)] bg-[var(--color-bg-card)] text-[var(--color-text-primary)] autocomplete-bg-fix"
 				>
 			</div>
 			
@@ -45,7 +45,7 @@
 					id="subject" 
 					name="subject" 
 					required
-					class="w-full px-4 py-2 border border-secondary rounded-md focus:outline-none focus:ring-2 focus:ring-primary bg-accent text-light"
+					class="w-full px-4 py-2 border border-[var(--color-text-secondary)] rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--color-accent-yellow)] bg-[var(--color-bg-card)] text-[var(--color-text-primary)] autocomplete-bg-fix"
 				>
 			</div>
 			
@@ -56,7 +56,7 @@
 					name="message" 
 					rows="5" 
 					required
-					class="w-full px-4 py-2 border border-secondary rounded-md focus:outline-none focus:ring-2 focus:ring-primary bg-accent text-light"
+					class="w-full px-4 py-2 border border-[var(--color-text-secondary)] rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--color-accent-yellow)] bg-[var(--color-bg-card)] text-[var(--color-text-primary)] autocomplete-bg-fix"
 				></textarea>
 			</div>
 			
@@ -81,5 +81,33 @@
 	
 	.focus\:ring-primary:focus {
 		--tw-ring-color: var(--color-primary);
+	}
+	
+	/* Fix for browser autocomplete background colors */
+	.autocomplete-bg-fix {
+		background-color: var(--color-bg-card) !important;
+		background-image: none !important;
+		color: var(--color-text-primary) !important;
+	}
+	
+	/* Webkit browsers (Chrome, Safari, Edge) */
+	.autocomplete-bg-fix:-webkit-autofill,
+	.autocomplete-bg-fix:-webkit-autofill:hover,
+	.autocomplete-bg-fix:-webkit-autofill:focus,
+	.autocomplete-bg-fix:-webkit-autofill:active {
+		-webkit-box-shadow: 0 0 0 30px var(--color-bg-card) inset !important;
+		-webkit-text-fill-color: var(--color-text-primary) !important;
+		background-color: var(--color-bg-card) !important;
+	}
+	
+	/* Firefox */
+	.autocomplete-bg-fix::-moz-placeholder {
+		color: var(--color-text-secondary) !important;
+		opacity: 1;
+	}
+	
+	/* Ensure transition is smooth */
+	.autocomplete-bg-fix {
+		transition: background-color 5000s ease-in-out 0s;
 	}
 </style>

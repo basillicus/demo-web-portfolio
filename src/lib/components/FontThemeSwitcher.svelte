@@ -1,7 +1,7 @@
 <script>
   import { onMount } from 'svelte';
   
-  // Font themes array - focused on accessibility vs standard
+  // Font themes
   const fontThemes = [
     { id: 'standard', name: 'Standard (Default)' },
     { id: 'accessibility', name: 'Accessibility Optimized' }
