@@ -21,7 +21,9 @@
 						<p class="text-gray-600 mb-4">{project.summary}</p>
 						<div class="flex flex-wrap gap-2 mb-4">
 							{#each project.tags as tag}
-								<span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-sm">{tag}</span>
+								<a href="/tags/{encodeURIComponent(tag)}" class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-sm hover:bg-gray-200 transition-colors">
+									{tag}
+								</a>
 							{/each}
 						</div>
 						<a href="/projects/{project.slug}" class="btn btn-secondary">View Project</a>

@@ -20,7 +20,9 @@
 						<p class="text-gray-600 mb-4">{post.summary}</p>
 						<div class="flex flex-wrap gap-2 mb-4">
 							{#each post.tags as tag}
-								<a href="/tags/{tag}" class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-sm hover:bg-gray-200">{tag}</a>
+								<a href="/tags/{encodeURIComponent(tag)}" class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-sm hover:bg-gray-200 transition-colors">
+									{tag}
+								</a>
 							{/each}
 						</div>
 						<a href="/blog/{post.slug}" class="btn btn-secondary">Read Article</a>

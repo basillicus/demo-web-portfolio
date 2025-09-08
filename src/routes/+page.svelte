@@ -1,53 +1,15 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	
-	// Sample data - in a real app, this would come from our content files
+	export let data;
+	
+	const { featuredProject, projects, blogPosts } = data;
+	
 	const name = "David Smith";
 	const tagline = "Machine Learning Engineer & AI Researcher";
 	
 	let displayedTagline = '';
 	let taglineIndex = 0;
-	
-	// Featured project
-	const featuredProject = {
-		title: "AI-Powered Customer Analytics Platform",
-		summary: "A comprehensive platform for analyzing customer behavior using machine learning models.",
-		slug: "ai-customer-analytics"
-	};
-	
-	// Recent projects
-	const projects = [
-		{
-			title: "AI-Powered Customer Analytics Platform",
-			summary: "A comprehensive platform for analyzing customer behavior using machine learning models.",
-			tags: ["machine learning", "analytics", "python"],
-			slug: "ai-customer-analytics"
-		},
-		{
-			title: "Natural Language Processing for Financial Document Analysis",
-			summary: "An NLP system for automatically extracting and categorizing information from financial documents.",
-			tags: ["nlp", "finance", "machine learning"],
-			slug: "nlp-financial-docs"
-		}
-	];
-	
-	// Recent blog posts
-	const blogPosts = [
-		{
-			title: "Getting Started with Machine Learning in Python",
-			summary: "A beginner-friendly guide to starting your machine learning journey with Python.",
-			date: "2025-08-30",
-			tags: ["machine learning", "python", "tutorial"],
-			slug: "getting-started-ml"
-		},
-		{
-			title: "Understanding Neural Networks: The Building Blocks of Deep Learning",
-			summary: "A deep dive into how neural networks work and why they're so powerful for complex problems.",
-			date: "2025-08-10",
-			tags: ["neural networks", "deep learning", "ai"],
-			slug: "neural-networks"
-		}
-	];
 	
 	onMount(() => {
 		// Typewriter effect for tagline
@@ -117,7 +79,9 @@
 						<p class="text-gray-600 mb-4">{project.summary}</p>
 						<div class="flex flex-wrap gap-2 mb-4">
 							{#each project.tags as tag}
-								<span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-sm">{tag}</span>
+								<a href="/tags/{encodeURIComponent(tag)}" class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-sm hover:bg-gray-200 transition-colors">
+									{tag}
+								</a>
 							{/each}
 						</div>
 						<a href="/projects/{project.slug}" class="theme-link font-medium hover:font-bold transition-colors duration-200">View Project</a>
@@ -142,7 +106,9 @@
 						<p class="text-gray-600 mb-4">{post.summary}</p>
 						<div class="flex flex-wrap gap-2 mb-4">
 							{#each post.tags as tag}
-								<span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-sm">{tag}</span>
+								<a href="/tags/{encodeURIComponent(tag)}" class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-sm hover:bg-gray-200 transition-colors">
+									{tag}
+								</a>
 							{/each}
 						</div>
 						<a href="/blog/{post.slug}" class="theme-link font-medium hover:font-bold transition-colors duration-200">Read Article</a>

@@ -1,37 +1,12 @@
 <script lang="ts">
-	// Sample data - in a real app, this would come from our content files
 	export let data;
 	
-	const tag = "machine learning"; // This would come from the URL parameter
-	
-	const items = [
-		{
-			title: "AI-Powered Customer Analytics Platform",
-			summary: "A comprehensive platform for analyzing customer behavior using machine learning models.",
-			date: "2025-08-15",
-			type: "project",
-			slug: "ai-customer-analytics"
-		},
-		{
-			title: "Getting Started with Machine Learning in Python",
-			summary: "A beginner-friendly guide to starting your machine learning journey with Python.",
-			date: "2025-08-30",
-			type: "blog",
-			slug: "getting-started-ml"
-		},
-		{
-			title: "Natural Language Processing for Financial Document Analysis",
-			summary: "An NLP system for automatically extracting and categorizing information from financial documents.",
-			date: "2025-07-22",
-			type: "project",
-			slug: "nlp-financial-docs"
-		}
-	];
+	const { tag, items } = data;
 </script>
 
 <svelte:head>
 	<title>Tag: {tag} - David Smith</title>
-	<meta name="description" content="Content tagged with {tag}" />
+	<meta name="description" content={`Content tagged with ${tag}`} />
 </svelte:head>
 
 <div class="container">
@@ -56,8 +31,14 @@
 				</div>
 			{/each}
 		</div>
+		{#if items.length === 0}
+			<div class="text-center py-12">
+				<p class="text-gray-500 text-lg">No content found with this tag.</p>
+				<a href="/" class="btn btn-secondary mt-4">← Back to Home</a>
+			</div>
+		{/if}
 		<div class="mt-8">
-			<a href="/" class="btn btn-secondary">&larr; Back to Home</a>
+			<a href="/" class="btn btn-secondary">← Back to Home</a>
 		</div>
 	</section>
 </div>
