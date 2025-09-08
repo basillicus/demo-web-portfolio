@@ -59,11 +59,13 @@
 	<!-- Featured Project -->
 	<section class="section fade-in">
 		<h2 class="text-3xl font-bold mb-8 text-center">Featured Project</h2>
-		<div class="card max-w-4xl mx-auto">
-			<div class="p-8">
+		<div class="card max-w-4xl mx-auto flex flex-col h-full">
+			<div class="p-8 flex flex-col flex-grow">
 				<h3 class="text-2xl font-bold mb-4">{featuredProject.title}</h3>
-				<p class="text-gray-600 mb-6">{featuredProject.summary}</p>
-				<a href="/projects/{featuredProject.slug}" class="btn inline-block">Learn More</a>
+				<p class="text-gray-600 mb-6 flex-grow">{featuredProject.summary}</p>
+				<div class="mt-auto">
+					<a href="/projects/{featuredProject.slug}" class="btn btn-secondary inline-block">Learn More</a>
+				</div>
 			</div>
 		</div>
 	</section>
@@ -73,10 +75,10 @@
 		<h2 class="text-3xl font-bold mb-8 text-center">Recent Projects</h2>
 		<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
 			{#each projects as project}
-				<div class="card fade-in-staggered">
-					<div class="p-6">
+				<div class="card fade-in-staggered flex flex-col h-full">
+					<div class="p-6 flex flex-col flex-grow">
 						<h3 class="text-xl font-bold mb-2">{project.title}</h3>
-						<p class="text-gray-600 mb-4">{project.summary}</p>
+						<p class="text-gray-600 mb-4 flex-grow">{project.summary}</p>
 						<div class="flex flex-wrap gap-2 mb-4">
 							{#each project.tags as tag}
 								<a href="/tags/{encodeURIComponent(tag)}" class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-sm hover:bg-gray-200 transition-colors">
@@ -84,7 +86,9 @@
 								</a>
 							{/each}
 						</div>
-						<a href="/projects/{project.slug}" class="theme-link font-medium hover:font-bold transition-colors duration-200">View Project</a>
+						<div class="mt-auto">
+							<a href="/projects/{project.slug}" class="btn btn-secondary">View Project</a>
+						</div>
 					</div>
 				</div>
 			{/each}
@@ -99,11 +103,11 @@
 		<h2 class="text-3xl font-bold mb-8 text-center">Latest from the Blog</h2>
 		<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
 			{#each blogPosts as post}
-				<div class="card fade-in-staggered">
-					<div class="p-6">
+				<div class="card fade-in-staggered flex flex-col h-full">
+					<div class="p-6 flex flex-col flex-grow">
 						<h3 class="text-xl font-bold mb-2">{post.title}</h3>
 						<p class="text-gray-500 text-sm mb-2">{post.date}</p>
-						<p class="text-gray-600 mb-4">{post.summary}</p>
+						<p class="text-gray-600 mb-4 flex-grow">{post.summary}</p>
 						<div class="flex flex-wrap gap-2 mb-4">
 							{#each post.tags as tag}
 								<a href="/tags/{encodeURIComponent(tag)}" class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-sm hover:bg-gray-200 transition-colors">
@@ -111,7 +115,9 @@
 								</a>
 							{/each}
 						</div>
-						<a href="/blog/{post.slug}" class="theme-link font-medium hover:font-bold transition-colors duration-200">Read Article</a>
+						<div class="mt-auto">
+							<a href="/blog/{post.slug}" class="btn btn-secondary">Read Article</a>
+						</div>
 					</div>
 				</div>
 			{/each}

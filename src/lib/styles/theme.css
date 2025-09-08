@@ -1,7 +1,7 @@
 :root {
   /* Dark Theme (default) */
   --color-bg-primary: #0D1B2A;
-  --color-bg-secondary: #1B263B;
+  --color-bg-secondary: #152232; /* Darker for better contrast */
   --color-bg-card: #415A77;
   --color-text-primary: #E0E1DD;
   --color-text-secondary: #778DA9;
@@ -41,12 +41,12 @@
 
 [data-theme="light"] {
   /* Light Theme */
-  --color-bg-primary: #f6fff8;
-  --color-bg-secondary: #eaf4f4;
-  --color-bg-card: #cce3de;
-  --color-text-primary: #333333;
-  --color-text-secondary: #6b9080;
-  --color-header-footer: #a4c3b2;
-  --color-accent-yellow: #c8ffce;
-  --color-accent-green: #6b9080;
+  --color-bg-primary: #f0f8f0; /* Slightly darker, more balanced background */
+  --color-bg-secondary: #e0f0ed; /* Softer secondary background */
+  --color-bg-card: #d8e8e4; /* More distinct card background */
+  --color-text-primary: #222222; /* Darker text for better contrast */
+  --color-text-secondary: #5a7a6f; /* Richer secondary text */
+  --color-header-footer: #c0d8d0; /* Softer header/footer */
+  --color-accent-yellow: #4a9b5d; /* More natural green accent */
+  --color-accent-green: #3a7a5f; /* Deeper green for accents */
 }

@@ -78,22 +78,30 @@ a:hover {
   color: #003300;
 }
 
+/* Specific styling for light theme secondary buttons */
 .btn-secondary {
   background-color: transparent;
   color: var(--color-accent-yellow);
   border: 1px solid var(--color-accent-yellow);
-  font-weight: 500;
+  font-weight: bold;
 }
 
 .btn-secondary:hover {
   background-color: var(--color-accent-yellow);
-  color: var(--color-bg-primary); /* Use dark theme background color for text */
+  color: var(--color-bg-primary);
   border-color: var(--color-accent-yellow);
 }
 
 /* Specific styling for light theme secondary buttons */
+[data-theme="light"] .btn-secondary {
+  color: var(--color-accent-green);
+  border-color: var(--color-accent-green);
+}
+
 [data-theme="light"] .btn-secondary:hover {
-  color: #003300; /* Dark green text for better contrast on light green */
+  background-color: var(--color-accent-yellow); /* Match primary button hover color */
+  color: #003300; /* Dark green text for better contrast */
+  border-color: var(--color-accent-yellow);
 }
 
 .card {
@@ -129,6 +137,15 @@ a:hover {
 
 .text-gray-700 {
   color: var(--color-bg-primary);
+}
+
+/* Light theme tag styling */
+[data-theme="light"] .bg-gray-100 {
+  background-color: #d0e0da; /* Softer background for tags in light theme */
+}
+
+[data-theme="light"] .text-gray-700 {
+  color: #2c5c4a; /* Richer text color for tags in light theme */
 }
 
 .border-secondary {
@@ -366,16 +383,17 @@ pre[class*="language-"] {
   transition-duration: 200ms;
 }
 
+/* Theme link styling */
 .theme-link {
-  color: var(--color-accent-yellow); /* Default to accent color (yellow in dark theme) */
+  color: var(--color-accent-yellow); /* Default to accent color */
 }
 
 [data-theme="light"] .theme-link {
-  color: #003300; /* Dark green in light theme */
+  color: var(--color-accent-green); /* Deeper green in light theme */
 }
 
 .theme-link:hover {
-  color: var(--color-accent-yellow); /* Hover to accent color in both themes */
+  color: var(--color-accent-yellow); /* Hover to accent color */
 }
 
 @keyframes gradient {
