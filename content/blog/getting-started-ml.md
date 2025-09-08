@@ -1,8 +1,8 @@
 ---
-title: "Getting Started with Machine Learning in Python"
-date: "2025-08-30"
-summary: "A beginner-friendly guide to starting your machine learning journey with Python."
-tags: ["machine learning", "python", "tutorial"]
+title: 'Getting Started with Machine Learning in Python'
+date: '2025-08-30'
+summary: 'A beginner-friendly guide to starting your machine learning journey with Python.'
+tags: ['machine learning', 'python', 'tutorial']
 published: true
 ---
 
@@ -11,6 +11,7 @@ Machine learning has become an essential skill for developers and data scientist
 ## Prerequisites
 
 Before diving into machine learning, you should have a basic understanding of:
+
 - Python programming fundamentals
 - High school level mathematics (algebra and statistics)
 - Basic data manipulation concepts
@@ -20,15 +21,19 @@ Before diving into machine learning, you should have a basic understanding of:
 The Python ecosystem offers several powerful libraries for machine learning:
 
 ### Scikit-learn
+
 Scikit-learn is the most popular machine learning library in Python. It provides simple and efficient tools for data mining and data analysis.
 
 ### Pandas
+
 Pandas is essential for data manipulation and analysis. It provides data structures and operations for manipulating numerical tables and time series.
 
 ### NumPy
+
 NumPy is the fundamental package for scientific computing with Python. It provides support for large, multi-dimensional arrays and matrices.
 
 ### Matplotlib
+
 Matplotlib is a plotting library for creating static, animated, and interactive visualizations in Python.
 
 ## Your First Machine Learning Project
@@ -36,6 +41,7 @@ Matplotlib is a plotting library for creating static, animated, and interactive 
 Let's build a simple classifier to predict whether an email is spam or not:
 
 ```python
+
 from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.naive_bayes import MultinomialNB
@@ -74,9 +80,11 @@ print(f"Accuracy: {accuracy}")
 ## Next Steps
 
 After completing this basic example, consider exploring:
+
 - More advanced algorithms like Random Forest and Support Vector Machines
 - Deep learning with TensorFlow or PyTorch
 - Working with real-world datasets from Kaggle
 - Deploying models with Flask or FastAPI
 
 The key to mastering machine learning is consistent practice and gradually increasing the complexity of your projects.
+

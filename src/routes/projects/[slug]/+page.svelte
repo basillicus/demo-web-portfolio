@@ -2,64 +2,10 @@
 	import { onMount } from 'svelte';
 	import { highlightAll } from '$lib/utils/syntaxHighlighting';
 	
-	// Sample data - in a real app, this would come from our content files
 	export let data;
 	
-	const project = {
-		title: "AI-Powered Customer Analytics Platform",
-		date: "2025-08-15",
-		tags: ["machine learning", "analytics", "python"],
-		content: `
-			<h2>Project Overview</h2>
-			<p>This project involved developing a sophisticated customer analytics platform that leverages machine learning to provide actionable insights for businesses. The platform processes large volumes of customer data to identify patterns, predict behavior, and recommend strategies.</p>
-			
-			<h2>Technical Implementation</h2>
-			<p>The platform was built using Python with scikit-learn for machine learning models and FastAPI for the backend API. The frontend was developed with SvelteKit to provide a responsive and interactive user interface.</p>
-			
-			<p>Key features include:</p>
-			<ul>
-				<li>Real-time data processing pipelines</li>
-				<li>Predictive modeling for customer churn</li>
-				<li>Segmentation algorithms for targeted marketing</li>
-				<li>Interactive dashboards for data visualization</li>
-			</ul>
-			
-			<h3>Example Code</h3>
-			<pre class="language-python"><code>from sklearn.ensemble import RandomForestClassifier
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import accuracy_score
-import pandas as pd
-
-# Load customer data
-df = pd.read_csv('customer_data.csv')
-
-# Prepare features and target
-X = df[['age', 'income', 'purchase_history']]
-y = df['churn']
-
-# Split the data
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
-
-# Train the model
-model = RandomForestClassifier(n_estimators=100)
-model.fit(X_train, y_train)
-
-# Make predictions
-predictions = model.predict(X_test)
-
-# Evaluate
-accuracy = accuracy_score(y_test, predictions)
-print(f"Model accuracy: {accuracy}")</code></pre>
-			
-			<h2>Results</h2>
-			<p>The platform was successfully deployed for a major e-commerce client and resulted in:</p>
-			<ul>
-				<li>23% increase in customer retention</li>
-				<li>18% improvement in marketing campaign effectiveness</li>
-				<li>30% reduction in customer acquisition costs</li>
-			</ul>
-		`
-	};
+	// Use the loaded project data
+	const { project } = data;
 	
 	onMount(() => {
 		highlightAll();

@@ -18,7 +18,7 @@ export interface ContentItem {
 }
 
 export function parseFrontmatter(fileContent: string): { frontmatter: Frontmatter; content: string } {
-	const frontmatterRegex = /---\s*([\\s\\S]*?)\s*---\s*(.*)/s;
+	const frontmatterRegex = /---\s*([\s\S]*?)\s*---\s*(.*)/s;
 	const match = frontmatterRegex.exec(fileContent);
 	
 	if (!match) {
@@ -41,7 +41,7 @@ export function parseFrontmatter(fileContent: string): { frontmatter: Frontmatte
 				// Parse tags array
 				const tagsMatch = value.match(/\[(.*)\]/);
 				if (tagsMatch) {
-					frontmatter.tags = tagsMatch[1].split(',').map(tag => tag.trim().replace(/['\"]/g, ''));
+					frontmatter.tags = tagsMatch[1].split(',').map(tag => tag.trim().replace(/['"]/g, ''));
 				} else {
 					frontmatter.tags = [];
 				}
@@ -50,7 +50,7 @@ export function parseFrontmatter(fileContent: string): { frontmatter: Frontmatte
 				frontmatter.published = value.toLowerCase() === 'true';
 			} else {
 				// Parse string values
-				(frontmatter as any)[trimmedKey] = value.replace(/['\"]/g, '');
+				(frontmatter as any)[trimmedKey] = value.replace(/['"]/g, '');
 			}
 		}
 	});
@@ -58,83 +58,125 @@ export function parseFrontmatter(fileContent: string): { frontmatter: Frontmatte
 	return { frontmatter, content };
 }
 
-export function getProjects(): ContentItem[] {
-	const projectFiles = glob.sync('./content/projects/**/*.md');
+// Process markdown content to HTML using marked
+async function processMarkdown(content: string): Promise<string> {
+	try {
+		const { marked } = await import('marked');
+		return marked.parse(content);
+	} catch (error) {
+		console.error('Error processing markdown:', error);
+		return content;
+	}
+}
+
+export async function getProjects(): Promise<ContentItem[]> {
+	// Use absolute paths
+	const projectFiles = glob.sync(path.resolve('./content/projects/**/*.md'));
 	
-	return projectFiles.map(filePath => {
+	const projects = await Promise.all(projectFiles.map(async (filePath) => {
 		const fileContent = readFileSync(filePath, 'utf-8');
 		const { frontmatter, content } = parseFrontmatter(fileContent);
+		const processedContent = await processMarkdown(content);
 		const slug = path.basename(filePath, '.md');
 		
 		return {
 			slug,
-			content,
+			content: processedContent,
 			frontmatter,
 			filePath
 		};
-	}).filter(item => item.frontmatter.published !== false)
-	.sort((a, b) => new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime());
+	}));
+	
+	return projects
+		.filter(item => item.frontmatter.published !== false)
+		.sort((a, b) => new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime());
 }
 
-export function getBlogPosts(): ContentItem[] {
-	const blogFiles = glob.sync('./content/blog/**/*.md');
-	
-	return blogFiles.map(filePath => {
+export async function getBlogPosts(): Promise<ContentItem[]> {
+	try {
+		// Use absolute paths
+		const blogFiles = glob.sync(path.resolve('./content/blog/**/*.md'));
+		console.log('Found blog files:', blogFiles);
+		
+		const posts = await Promise.all(blogFiles.map(async (filePath) => {
+			const fileContent = readFileSync(filePath, 'utf-8');
+			const { frontmatter, content } = parseFrontmatter(fileContent);
+			const processedContent = await processMarkdown(content);
+			const slug = path.basename(filePath, '.md');
+			
+			return {
+				slug,
+				content: processedContent,
+				frontmatter,
+				filePath
+			};
+		}));
+		
+		return posts
+			.filter(item => item.frontmatter.published !== false)
+			.sort((a, b) => new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime());
+	} catch (error) {
+		console.error('Error in getBlogPosts:', error);
+		return [];
+	}
+}
+
+export async function getProjectBySlug(slug: string): Promise<ContentItem | null> {
+	try {
+		// Use absolute paths
+		const projectFiles = glob.sync(path.resolve(`./content/projects/**/${slug}.md`));
+		
+		if (projectFiles.length === 0) {
+			return null;
+		}
+		
+		const filePath = projectFiles[0];
 		const fileContent = readFileSync(filePath, 'utf-8');
 		const { frontmatter, content } = parseFrontmatter(fileContent);
-		const slug = path.basename(filePath, '.md');
+		const processedContent = await processMarkdown(content);
 		
 		return {
 			slug,
-			content,
+			content: processedContent,
 			frontmatter,
 			filePath
 		};
-	}).filter(item => item.frontmatter.published !== false)
-	.sort((a, b) => new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime());
-}
-
-export function getProjectBySlug(slug: string): ContentItem | null {
-	const projectFiles = glob.sync(`./content/projects/**/${slug}.md`);
-	
-	if (projectFiles.length === 0) {
+	} catch (error) {
+		console.error('Error in getProjectBySlug:', error);
 		return null;
 	}
-	
-	const filePath = projectFiles[0];
-	const fileContent = readFileSync(filePath, 'utf-8');
-	const { frontmatter, content } = parseFrontmatter(fileContent);
-	
-	return {
-		slug,
-		content,
-		frontmatter,
-		filePath
-	};
 }
 
-export function getBlogPostBySlug(slug: string): ContentItem | null {
-	const blogFiles = glob.sync(`./content/blog/**/${slug}.md`);
-	
-	if (blogFiles.length === 0) {
+export async function getBlogPostBySlug(slug: string): Promise<ContentItem | null> {
+	try {
+		// Use absolute paths
+		const blogFiles = glob.sync(path.resolve(`./content/blog/**/${slug}.md`));
+		console.log(`Looking for blog post with slug ${slug}, found files:`, blogFiles);
+		
+		if (blogFiles.length === 0) {
+			return null;
+		}
+		
+		const filePath = blogFiles[0];
+		const fileContent = readFileSync(filePath, 'utf-8');
+		const { frontmatter, content } = parseFrontmatter(fileContent);
+		const processedContent = await processMarkdown(content);
+		
+		return {
+			slug,
+			content: processedContent,
+			frontmatter,
+			filePath
+		};
+	} catch (error) {
+		console.error('Error in getBlogPostBySlug:', error);
 		return null;
 	}
-	
-	const filePath = blogFiles[0];
-	const fileContent = readFileSync(filePath, 'utf-8');
-	const { frontmatter, content } = parseFrontmatter(fileContent);
-	
-	return {
-		slug,
-		content,
-		frontmatter,
-		filePath
-	};
 }
 
-export function getAllTags(): string[] {
-	const projects = getProjects();
-	const blogPosts = getBlogPosts();
+export async function getAllTags(): Promise<string[]> {
+	const projects = await getProjects();
+	const blogPosts = await getBlogPosts();
 	
 	const allTags = new Set<string>();
 	
@@ -149,9 +191,9 @@ export function getAllTags(): string[] {
 	return Array.from(allTags).sort();
 }
 
-export function getItemsByTag(tag: string): ContentItem[] {
-	const projects = getProjects();
-	const blogPosts = getBlogPosts();
+export async function getItemsByTag(tag: string): Promise<ContentItem[]> {
+	const projects = await getProjects();
+	const blogPosts = await getBlogPosts();
 	
 	const taggedItems = [...projects, ...blogPosts].filter(item => 
 		item.frontmatter.tags.includes(tag)

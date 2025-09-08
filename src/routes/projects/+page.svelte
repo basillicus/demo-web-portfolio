@@ -1,21 +1,6 @@
 <script lang="ts">
-	// Sample data - in a real app, this would come from our content files
-	const projects = [
-		{
-			title: "AI-Powered Customer Analytics Platform",
-			summary: "A comprehensive platform for analyzing customer behavior using machine learning models.",
-			date: "2025-08-15",
-			tags: ["machine learning", "analytics", "python"],
-			slug: "ai-customer-analytics"
-		},
-		{
-			title: "Natural Language Processing for Financial Document Analysis",
-			summary: "An NLP system for automatically extracting and categorizing information from financial documents.",
-			date: "2025-07-22",
-			tags: ["nlp", "finance", "machine learning"],
-			slug: "nlp-financial-docs"
-		}
-	];
+	export let data;
+	const { projects } = data;
 </script>
 
 <svelte:head>

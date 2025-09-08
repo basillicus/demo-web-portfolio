@@ -1,21 +1,6 @@
 <script lang="ts">
-	// Sample data - in a real app, this would come from our content files
-	const posts = [
-		{
-			title: "Getting Started with Machine Learning in Python",
-			summary: "A beginner-friendly guide to starting your machine learning journey with Python.",
-			date: "2025-08-30",
-			tags: ["machine learning", "python", "tutorial"],
-			slug: "getting-started-ml"
-		},
-		{
-			title: "Understanding Neural Networks: The Building Blocks of Deep Learning",
-			summary: "A deep dive into how neural networks work and why they're so powerful for complex problems.",
-			date: "2025-08-10",
-			tags: ["neural networks", "deep learning", "ai"],
-			slug: "neural-networks"
-		}
-	];
+	export let data;
+	const { posts } = data;
 </script>
 
 <svelte:head>
