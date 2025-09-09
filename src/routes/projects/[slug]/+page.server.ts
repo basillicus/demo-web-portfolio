@@ -1,5 +1,14 @@
 import { error } from '@sveltejs/kit';
-import { getProjectBySlug } from '$lib/utils/content';
+import { getProjectBySlug, getProjects } from '$lib/utils/content';
+
+export const prerender = true;
+
+export async function entries() {
+	const projects = await getProjects();
+	return projects.map((project) => ({
+		slug: project.slug,
+	}));
+}
 
 export async function load({ params }) {
 	const { slug } = params;
