@@ -1,5 +1,14 @@
 import { error } from '@sveltejs/kit';
-import { getItemsByTag } from '$lib/utils/content';
+import { getItemsByTag, getAllTags } from '$lib/utils/content';
+
+export const prerender = true;
+
+export async function entries() {
+	const tags = await getAllTags();
+	return tags.map((tag) => ({
+		tag: tag,
+	}));
+}
 
 export async function load({ params }) {
 	const { tag } = params;

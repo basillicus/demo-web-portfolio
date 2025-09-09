@@ -1,3 +1,4 @@
+export const prerender = true;
 import { getProjects } from '$lib/utils/content';
 
 export async function load() {
