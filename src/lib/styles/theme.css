@@ -8,6 +8,7 @@
   --color-header-footer: #1B263B;
   --color-accent-yellow: #FFB703;
   --color-accent-green: #6b9080;
+  --color-accent-blue: #AAD7FC;
   
   /* Typography */
   --font-heading: 'Instrument Sans', sans-serif;
@@ -48,5 +49,6 @@
   --color-text-secondary: #5a7a6f; /* Richer secondary text */
   --color-header-footer: #c0d8d0; /* Softer header/footer */
   --color-accent-yellow: #4a9b5d; /* More natural green accent */
-  --color-accent-green: #3a7a5f; /* Deeper green for accents */
+  --color-accent-green: #3a7a5f;
+  --color-accent-bright-green: #66BB6A; /* Deeper green for accents */
 }

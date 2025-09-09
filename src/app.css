@@ -225,8 +225,11 @@ a:hover {
 }
 
 .card:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
+  box-shadow: 0 0 10px 4px rgba(from var(--color-accent-blue) r g b / 0.6);
+}
+
+[data-theme="light"] .card:hover {
+  box-shadow: 0 0 10px 4px rgba(from var(--color-accent-bright-green) r g b / 0.6);
 }
 
 .container {
