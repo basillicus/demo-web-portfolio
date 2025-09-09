@@ -6,17 +6,16 @@
 
 /* Base styles */
 html {
-  background-color: var(--color-bg-primary);
+  background: radial-gradient(circle at center, var(--color-bg-card), var(--color-bg-secondary));
+  background-size: 300% 300%;
+  animation: gradient 20s ease infinite;
+  background-attachment: fixed;
 }
 
 body {
   font-family: var(--font-body);
-  background: radial-gradient(circle at center, var(--color-bg-card), var(--color-bg-secondary));
-  background-size: 300% 300%;
-  animation: gradient 20s ease infinite;
   color: var(--color-text-primary);
   line-height: 1.6;
-  background-attachment: fixed;
 }
 
 /* Font theme classes */
