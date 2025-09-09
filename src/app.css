@@ -5,6 +5,10 @@
 @import './lib/styles/font-themes.css';
 
 /* Base styles */
+html {
+  background-color: var(--color-bg-primary);
+}
+
 body {
   font-family: var(--font-body);
   background: radial-gradient(circle at center, var(--color-bg-card), var(--color-bg-secondary));
