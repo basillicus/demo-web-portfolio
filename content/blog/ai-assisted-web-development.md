@@ -6,7 +6,6 @@ tags: ["ai", "web development", "sveltekit", "portfolio"]
 published: true
 ---
 
-# AI-Assisted Web Development: Building a Portfolio with Qwen Code
 
 In this post, I'll share my experience collaborating with Qwen Code, an AI coding assistant, to build my professional portfolio website. This isn't just about using AI to write code—it's about exploring a new paradigm of human-AI collaboration in software development.
 
